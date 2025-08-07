@@ -23,31 +23,19 @@ AI-powered workspace system to analyze YouTube channels and generate production-
 /frontend       React app
 ```
 
-## Getting Started
+## Getting Started (Cloud-only)
 
-1) Prerequisites
-- Node.js 18+
-- Docker or local MongoDB and Redis
+Use Vercel one-click deploy:
 
-2) Environment
-Create `backend/.env` and `frontend/.env` based on `.env.example`. Do not commit secrets.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/dimariyalil/ytubbb&env=YOUTUBE_API_KEY,CLAUDE_API_KEY,MONGODB_URI,REDIS_URL)
 
-3) Install
-```
-npm run install:all
-```
+Set these variables in Vercel:
+- YOUTUBE_API_KEY
+- CLAUDE_API_KEY
+- MONGODB_URI (MongoDB Atlas)
+- REDIS_URL (Upstash Redis)
 
-4) Run services (via Docker)
-```
-docker-compose up -d
-```
-
-5) Dev servers
-```
-npm run dev
-```
-- API: http://localhost:5000
-- Web: http://localhost:5173
+No localhost required. The app will be available at your Vercel domain.
 
 ## API
 Base path: `/api`
@@ -63,9 +51,9 @@ Base path: `/api`
 - GET `/api/workspaces/:id/export?format=pdf|json|txt` — export
 
 ## Deployment
-- Frontend: Vercel/Netlify (build: `npm run build` in `frontend`, output: `dist`)
-- Backend: Railway/Vercel (Node server), set environment variables, allow CORS
-- MongoDB Atlas + Redis Cloud recommended
+- Frontend + Serverless API: Vercel (builds `frontend`, functions in `/api`)
+- Set environment variables in Vercel Project Settings
+- MongoDB Atlas + Upstash Redis recommended
 
 ## Screenshots
 - Dashboard (placeholder)

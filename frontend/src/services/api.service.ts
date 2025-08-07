@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: '/api' });
+const API_URL = import.meta.env.PROD ? 'https://ytubbb.vercel.app/api' : '/api';
+const api = axios.create({ baseURL: API_URL });
 
 export interface Workspace {
   _id: string;
