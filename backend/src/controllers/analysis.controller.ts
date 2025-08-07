@@ -15,7 +15,7 @@ export const buildAnalyzeHandlers = (redis: Redis, queue: Queue.Queue<AnalyzeJob
 
     const maxVideos = Number(process.env.MAX_VIDEOS_PER_CHANNEL || 10);
     await queue.add({
-      workspaceId: ws._id.toString(),
+      workspaceId: ws.id, 
       channelId: ws.channelId,
       maxVideos,
       apiKeys: {

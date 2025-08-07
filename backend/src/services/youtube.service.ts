@@ -1,6 +1,6 @@
 import { yt } from '../config/youtube.js';
 import { CacheService } from './cache.service.js';
-import { Transcript, transcript } from 'youtube-transcript';
+import ytTranscript from 'youtube-transcript';
 
 export class YouTubeService {
   private apiKey: string;
@@ -65,7 +65,7 @@ export class YouTubeService {
 
   async getTranscript(videoId: string): Promise<{ text: string; language: string; source: 'youtube' } | null> {
     try {
-      const items: Transcript[] = await transcript(videoId);
+      const items: any[] = await (ytTranscript as any).fetchTranscript(videoId);
       const text = items.map(i => i.text).join(' ');
       const language = items[0]?.lang || 'en';
       return { text, language, source: 'youtube' };
